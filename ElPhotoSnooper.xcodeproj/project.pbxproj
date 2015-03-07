@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94152BBC1AAB0242008A9AB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94152BBB1AAB0242008A9AB1 /* main.m */; };
+		94152BBF1AAB0242008A9AB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94152BBE1AAB0242008A9AB1 /* AppDelegate.m */; };
+		94152BC51AAB0242008A9AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94152BC31AAB0242008A9AB1 /* Main.storyboard */; };
+		94152BC71AAB0242008A9AB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94152BC61AAB0242008A9AB1 /* Images.xcassets */; };
+		94152BD61AAB0242008A9AB1 /* ElPhotoSnooperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94152BD51AAB0242008A9AB1 /* ElPhotoSnooperTests.m */; };
+		D668B169C17A0D39CA4E028A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB764B34B9AE4E50CC80BEF /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94152BD01AAB0242008A9AB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94152BAE1AAB0242008A9AB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94152BB51AAB0242008A9AB1;
+			remoteInfo = ElPhotoSnooper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3EBCBE523DD105BD065BC515 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4CB764B34B9AE4E50CC80BEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		94152BB61AAB0242008A9AB1 /* ElPhotoSnooper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElPhotoSnooper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94152BBA1AAB0242008A9AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94152BBB1AAB0242008A9AB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		94152BBD1AAB0242008A9AB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		94152BBE1AAB0242008A9AB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		94152BC41AAB0242008A9AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		94152BC61AAB0242008A9AB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		94152BCF1AAB0242008A9AB1 /* ElPhotoSnooperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElPhotoSnooperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94152BD41AAB0242008A9AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94152BD51AAB0242008A9AB1 /* ElPhotoSnooperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElPhotoSnooperTests.m; sourceTree = "<group>"; };
+		B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94152BB31AAB0242008A9AB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D668B169C17A0D39CA4E028A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94152BCC1AAB0242008A9AB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D0788867E72AF40B3F58E90 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CB764B34B9AE4E50CC80BEF /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43C74EEDA3034B238B39DC67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */,
+				3EBCBE523DD105BD065BC515 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		94152BAD1AAB0242008A9AB1 = {
+			isa = PBXGroup;
+			children = (
+				94152BB81AAB0242008A9AB1 /* ElPhotoSnooper */,
+				94152BD21AAB0242008A9AB1 /* ElPhotoSnooperTests */,
+				94152BB71AAB0242008A9AB1 /* Products */,
+				43C74EEDA3034B238B39DC67 /* Pods */,
+				0D0788867E72AF40B3F58E90 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		94152BB71AAB0242008A9AB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94152BB61AAB0242008A9AB1 /* ElPhotoSnooper.app */,
+				94152BCF1AAB0242008A9AB1 /* ElPhotoSnooperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94152BB81AAB0242008A9AB1 /* ElPhotoSnooper */ = {
+			isa = PBXGroup;
+			children = (
+				94152BBD1AAB0242008A9AB1 /* AppDelegate.h */,
+				94152BBE1AAB0242008A9AB1 /* AppDelegate.m */,
+				94152BC31AAB0242008A9AB1 /* Main.storyboard */,
+				94152BC61AAB0242008A9AB1 /* Images.xcassets */,
+				94152BB91AAB0242008A9AB1 /* Supporting Files */,
+			);
+			path = ElPhotoSnooper;
+			sourceTree = "<group>";
+		};
+		94152BB91AAB0242008A9AB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94152BBA1AAB0242008A9AB1 /* Info.plist */,
+				94152BBB1AAB0242008A9AB1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		94152BD21AAB0242008A9AB1 /* ElPhotoSnooperTests */ = {
+			isa = PBXGroup;
+			children = (
+				94152BD51AAB0242008A9AB1 /* ElPhotoSnooperTests.m */,
+				94152BD31AAB0242008A9AB1 /* Supporting Files */,
+			);
+			path = ElPhotoSnooperTests;
+			sourceTree = "<group>";
+		};
+		94152BD31AAB0242008A9AB1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				94152BD41AAB0242008A9AB1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94152BB51AAB0242008A9AB1 /* ElPhotoSnooper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94152BD91AAB0242008A9AB1 /* Build configuration list for PBXNativeTarget "ElPhotoSnooper" */;
+			buildPhases = (
+				B8FCAF2B767AE1E00AD79568 /* Check Pods Manifest.lock */,
+				94152BB21AAB0242008A9AB1 /* Sources */,
+				94152BB31AAB0242008A9AB1 /* Frameworks */,
+				94152BB41AAB0242008A9AB1 /* Resources */,
+				7196B4BDC3282E5599F1B64B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElPhotoSnooper;
+			productName = ElPhotoSnooper;
+			productReference = 94152BB61AAB0242008A9AB1 /* ElPhotoSnooper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94152BCE1AAB0242008A9AB1 /* ElPhotoSnooperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94152BDC1AAB0242008A9AB1 /* Build configuration list for PBXNativeTarget "ElPhotoSnooperTests" */;
+			buildPhases = (
+				94152BCB1AAB0242008A9AB1 /* Sources */,
+				94152BCC1AAB0242008A9AB1 /* Frameworks */,
+				94152BCD1AAB0242008A9AB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94152BD11AAB0242008A9AB1 /* PBXTargetDependency */,
+			);
+			name = ElPhotoSnooperTests;
+			productName = ElPhotoSnooperTests;
+			productReference = 94152BCF1AAB0242008A9AB1 /* ElPhotoSnooperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94152BAE1AAB0242008A9AB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = 8of;
+				TargetAttributes = {
+					94152BB51AAB0242008A9AB1 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					94152BCE1AAB0242008A9AB1 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 94152BB51AAB0242008A9AB1;
+					};
+				};
+			};
+			buildConfigurationList = 94152BB11AAB0242008A9AB1 /* Build configuration list for PBXProject "ElPhotoSnooper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 94152BAD1AAB0242008A9AB1;
+			productRefGroup = 94152BB71AAB0242008A9AB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94152BB51AAB0242008A9AB1 /* ElPhotoSnooper */,
+				94152BCE1AAB0242008A9AB1 /* ElPhotoSnooperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94152BB41AAB0242008A9AB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94152BC51AAB0242008A9AB1 /* Main.storyboard in Resources */,
+				94152BC71AAB0242008A9AB1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94152BCD1AAB0242008A9AB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7196B4BDC3282E5599F1B64B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8FCAF2B767AE1E00AD79568 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94152BB21AAB0242008A9AB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94152BBF1AAB0242008A9AB1 /* AppDelegate.m in Sources */,
+				94152BBC1AAB0242008A9AB1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94152BCB1AAB0242008A9AB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94152BD61AAB0242008A9AB1 /* ElPhotoSnooperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94152BD11AAB0242008A9AB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94152BB51AAB0242008A9AB1 /* ElPhotoSnooper */;
+			targetProxy = 94152BD01AAB0242008A9AB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94152BC31AAB0242008A9AB1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94152BC41AAB0242008A9AB1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94152BD71AAB0242008A9AB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94152BD81AAB0242008A9AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94152BDA1AAB0242008A9AB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ElPhotoSnooper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		94152BDB1AAB0242008A9AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EBCBE523DD105BD065BC515 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ElPhotoSnooper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		94152BDD1AAB0242008A9AB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ElPhotoSnooperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElPhotoSnooper.app/ElPhotoSnooper";
+			};
+			name = Debug;
+		};
+		94152BDE1AAB0242008A9AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ElPhotoSnooperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElPhotoSnooper.app/ElPhotoSnooper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94152BB11AAB0242008A9AB1 /* Build configuration list for PBXProject "ElPhotoSnooper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94152BD71AAB0242008A9AB1 /* Debug */,
+				94152BD81AAB0242008A9AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94152BD91AAB0242008A9AB1 /* Build configuration list for PBXNativeTarget "ElPhotoSnooper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94152BDA1AAB0242008A9AB1 /* Debug */,
+				94152BDB1AAB0242008A9AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94152BDC1AAB0242008A9AB1 /* Build configuration list for PBXNativeTarget "ElPhotoSnooperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94152BDD1AAB0242008A9AB1 /* Debug */,
+				94152BDE1AAB0242008A9AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94152BAE1AAB0242008A9AB1 /* Project object */;
+}
