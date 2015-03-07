@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "EPSConstants.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +16,14 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self createDefaultSettings];
+    
     return YES;
+}
+
+- (void)createDefaultSettings {
+    NSDictionary* defaults = @{INSTAGRAM_USER_ACCESS_TOKEN:@""};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
 
 @end

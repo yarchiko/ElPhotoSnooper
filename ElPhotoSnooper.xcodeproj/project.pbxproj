@@ -12,6 +12,9 @@
 		94152BC51AAB0242008A9AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94152BC31AAB0242008A9AB1 /* Main.storyboard */; };
 		94152BC71AAB0242008A9AB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94152BC61AAB0242008A9AB1 /* Images.xcassets */; };
 		94152BD61AAB0242008A9AB1 /* ElPhotoSnooperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94152BD51AAB0242008A9AB1 /* ElPhotoSnooperTests.m */; };
+		947B2EEC1AAB103A0078A3A8 /* EPSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2EEB1AAB103A0078A3A8 /* EPSConstants.m */; };
+		947B2EF71AAB27FF0078A3A8 /* IKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */; };
+		947B2EF91AAB2DD60078A3A8 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 947B2EF81AAB2DD60078A3A8 /* InstagramKit.plist */; };
 		D668B169C17A0D39CA4E028A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB764B34B9AE4E50CC80BEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,11 @@
 		94152BCF1AAB0242008A9AB1 /* ElPhotoSnooperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElPhotoSnooperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94152BD41AAB0242008A9AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94152BD51AAB0242008A9AB1 /* ElPhotoSnooperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElPhotoSnooperTests.m; sourceTree = "<group>"; };
+		947B2EEA1AAB103A0078A3A8 /* EPSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPSConstants.h; sourceTree = "<group>"; };
+		947B2EEB1AAB103A0078A3A8 /* EPSConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPSConstants.m; sourceTree = "<group>"; };
+		947B2EF51AAB27FF0078A3A8 /* IKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKLoginViewController.h; sourceTree = "<group>"; };
+		947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKLoginViewController.m; sourceTree = "<group>"; };
+		947B2EF81AAB2DD60078A3A8 /* InstagramKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstagramKit.plist; sourceTree = "<group>"; };
 		B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,11 +108,14 @@
 		94152BB81AAB0242008A9AB1 /* ElPhotoSnooper */ = {
 			isa = PBXGroup;
 			children = (
+				947B2EED1AAB119B0078A3A8 /* Controllers */,
 				94152BBD1AAB0242008A9AB1 /* AppDelegate.h */,
 				94152BBE1AAB0242008A9AB1 /* AppDelegate.m */,
 				94152BC31AAB0242008A9AB1 /* Main.storyboard */,
 				94152BC61AAB0242008A9AB1 /* Images.xcassets */,
 				94152BB91AAB0242008A9AB1 /* Supporting Files */,
+				947B2EEA1AAB103A0078A3A8 /* EPSConstants.h */,
+				947B2EEB1AAB103A0078A3A8 /* EPSConstants.m */,
 			);
 			path = ElPhotoSnooper;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 		94152BB91AAB0242008A9AB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				947B2EF81AAB2DD60078A3A8 /* InstagramKit.plist */,
 				94152BBA1AAB0242008A9AB1 /* Info.plist */,
 				94152BBB1AAB0242008A9AB1 /* main.m */,
 			);
@@ -133,6 +145,15 @@
 				94152BD41AAB0242008A9AB1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		947B2EED1AAB119B0078A3A8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				947B2EF51AAB27FF0078A3A8 /* IKLoginViewController.h */,
+				947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +202,7 @@
 		94152BAE1AAB0242008A9AB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EPS;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = 8of;
 				TargetAttributes = {
@@ -218,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94152BC51AAB0242008A9AB1 /* Main.storyboard in Resources */,
+				947B2EF91AAB2DD60078A3A8 /* InstagramKit.plist in Resources */,
 				94152BC71AAB0242008A9AB1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				94152BBF1AAB0242008A9AB1 /* AppDelegate.m in Sources */,
+				947B2EF71AAB27FF0078A3A8 /* IKLoginViewController.m in Sources */,
+				947B2EEC1AAB103A0078A3A8 /* EPSConstants.m in Sources */,
 				94152BBC1AAB0242008A9AB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
