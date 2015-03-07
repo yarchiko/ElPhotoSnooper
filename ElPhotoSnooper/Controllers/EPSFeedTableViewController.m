@@ -7,11 +7,11 @@
 //
 
 #import "EPSFeedTableViewController.h"
-#import "EPSFeedStorage.h"
 #import "EPSConstants.h"
-#import "EPSFeedTableViewController.h"
+#import "EPSFeedStorage.h"
+#import "EPSFeedTableViewCell.h"
 
-@interface EPSFeedTableViewController ()
+@interface EPSFeedTableViewController () <EPSFeedStorageDelegate>
 
 @property (strong, nonatomic) EPSFeedStorage *feedStorage;
 
@@ -22,27 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _feedStorage = [[EPSFeedStorage alloc] init];
-    BOOL isUserAuthed = [self isUserAuthed];
+    _feedStorage.feedStorageDelegate = self;
+    
+    BOOL isUserAuthed = [_feedStorage isUserAuthed];
     if (!isUserAuthed) {
         [self performSegueWithIdentifier:SEGUE_TO_AUTH_SCREEN sender:self];
     }
-}
-
-- (BOOL)isUserAuthed {
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:INSTAGRAM_USER_ACCESS_TOKEN];
-    BOOL isAccessTokenBlank = [accessToken isEqualToString:@""];
-    if (isAccessTokenBlank) {
-        return NO;
+    else {
+        [_feedStorage getUserFeed];
     }
-    return YES;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    NSArray *feedEntries = _feedStorage.feedArray;
+    NSInteger feedEntriesCount = [feedEntries count];
+    NSLog(@"%ld", (long)feedEntriesCount);
+    return feedEntriesCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -50,14 +47,36 @@
     return 1;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
+- (EPSFeedTableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
+    EPSFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                             forIndexPath:indexPath];
     
+    NSInteger row = indexPath.row;
+    NSURL *imageUrl = [_feedStorage getImageUrlForElementInStorageWithIndex:row];
+    NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:row];
+    NSInteger commentsCount = [_feedStorage getCommentsCountForElementInStorageWithIndex:row];
+    NSArray *comments = [_feedStorage getCommentsForElementInStorageWithIndex:row];
+    
+    [cell prepareCellWithImageUrl:imageUrl
+                    andLikesCount:likesCount
+                 andCommentsCount:commentsCount
+                      andComments:comments];
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+    NSString *username = [_feedStorage getUsernameForElementInStorageWithIndex:section];
+    
+    return username;
+}
+
+#pragma mark - EPSFeedStorageDelegate
+
+- (void)updateViewWithFreshData {
+    [self.tableView reloadData];
 }
 
 @end

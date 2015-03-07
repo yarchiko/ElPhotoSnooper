@@ -10,9 +10,9 @@
 
 @interface EPSFeedTableViewCell : UITableViewCell
 
-- (void) prepareCellWithPhotoString:(NSString *)photo
-                      andLikesCount:(NSString *)likesCount
-                   andCommentsCount:(NSString *)commentsCount
-                   andCommentsArray:(NSString *)commentsArray;
+- (void) prepareCellWithImageUrl:(NSURL *)imageUrl
+                   andLikesCount:(NSInteger)likesCount
+                andCommentsCount:(NSInteger)commentsCount
+                     andComments:(NSArray *)comments;
 
 @end
