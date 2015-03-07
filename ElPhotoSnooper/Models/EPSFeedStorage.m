@@ -118,21 +118,27 @@
         UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
         UIColor *foregroundColor = [UIColor whiteColor];
         
-        // Create the attributes
+        /**
+         *  Создание аттрибутов
+         */
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName,
                                foregroundColor, NSForegroundColorAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
-        const NSRange range = NSMakeRange(2,4); // range of " 2012/10/14 ". Ideally this should not be hardcoded
+        /**
+         *  Жёсткая расстановка диапазона разметки, для теста. Переписать.
+         */
+        const NSRange range = NSMakeRange(2,4);
         
-        // Create the attributed string (text + attributes)
+        /**
+         Создание attributedString из текста и аттрибутов
+         */
         NSMutableAttributedString *attributedText =
         [[NSMutableAttributedString alloc] initWithString:commentText
                                                attributes:attrs];
         [attributedText setAttributes:subAttrs range:range];
         
-        // Set it in our UILabel and we are done!
         [commentMutableArray addObject:attributedText];
     }
     
