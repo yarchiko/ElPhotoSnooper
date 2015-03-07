@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="phi-Yn-lKL" kind="relationship" relationship="rootViewController" id="8XH-y0-Poc"/>
+                        <segue destination="TXO-Fj-nib" kind="relationship" relationship="rootViewController" id="kIt-3J-c6Q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mlg-I3-MHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,11 +31,11 @@
                         <viewControllerLayoutGuide type="bottom" id="PtA-uo-m6k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1iA-4j-ts4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c98-mC-WhL">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c98-mC-WhL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -54,7 +54,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44b-L5-4wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552" y="331"/>
+            <point key="canvasLocation" x="-204" y="-245"/>
+        </scene>
+        <!--Feed Table View Controller-->
+        <scene sceneID="esh-ch-jTk">
+            <objects>
+                <tableViewController id="TXO-Fj-nib" customClass="EPSFeedTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EHA-3t-vA9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a5r-aV-p2U" customClass="EPSFeedPhotoTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5r-aV-p2U" id="vwz-GY-bSW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cA6-0o-KH2" customClass="EPSFeedCountersTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cA6-0o-KH2" id="tSM-C8-Qb1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ef9-Cz-96S" customClass="EPSFeedCommentsTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ef9-Cz-96S" id="SxQ-5m-4Zq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TXO-Fj-nib" id="kAg-Cc-DMJ"/>
+                            <outlet property="delegate" destination="TXO-Fj-nib" id="zf7-lB-HoM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="cF2-sT-oJC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgN-LA-OU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-522" y="331"/>
         </scene>
     </scenes>
 </document>
