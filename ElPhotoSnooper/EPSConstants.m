@@ -10,3 +10,6 @@
 
 // Instagram API
 NSString *const INSTAGRAM_USER_ACCESS_TOKEN = @"userAccessToken";
+
+// Cells identifiers
+FOUNDATION_EXPORT NSString *const FEED_CELL_REUSE_IDENTIFIER = @"feedCellReuseIdentifier";

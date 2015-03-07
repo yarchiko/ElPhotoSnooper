@@ -7,7 +7,12 @@
 //
 
 #import "EPSFeedStorage.h"
+#import "EPSConstants.h"
 
 @implementation EPSFeedStorage
+
+- (void)getUserFeed {
+    
+}
 
 @end

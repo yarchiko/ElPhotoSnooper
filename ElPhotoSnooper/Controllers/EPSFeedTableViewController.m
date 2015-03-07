@@ -8,6 +8,8 @@
 
 #import "EPSFeedTableViewController.h"
 #import "EPSFeedStorage.h"
+#import "EPSConstants.h"
+#import "EPSFeedTableViewController.h"
 
 @interface EPSFeedTableViewController ()
 
@@ -20,10 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _feedStorage = [[EPSFeedStorage alloc] init];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
     
 }
 
@@ -35,21 +33,19 @@
     return 0;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    /**
-     *  Три ячейки для каждой "записи" - фото, количество лайков-комментариев и сам список последних комментариев.
-     */
-    return 3;
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
+                                                            forIndexPath:indexPath];
     
-    // Configure the cell...
     
     return cell;
 }
-*/
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface EPSFeedStorage : NSObject
+
+/**
+ *  Получение "страницы" из ленты пользователя, начиная с первой
+ */
+- (void)getUserFeed;
 
 @end
