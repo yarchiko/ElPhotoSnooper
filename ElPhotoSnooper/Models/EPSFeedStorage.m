@@ -84,14 +84,14 @@
 
 - (NSInteger)getLikesCountForElementInStorageWithIndex:(NSInteger)index {
     InstagramMedia *instagramMedia = _feedArray[index];
-    NSUInteger likesCount = instagramMedia.likesCount;
-    
+    NSInteger likesCount = instagramMedia.likesCount;
+
     return likesCount;
 }
 
 - (NSInteger)getCommentsCountForElementInStorageWithIndex:(NSInteger)index {
     InstagramMedia *instagramMedia = _feedArray[index];
-    NSUInteger commentsCount = instagramMedia.commentCount;
+    NSInteger commentsCount = instagramMedia.commentCount;
 
     return commentsCount;
 }
