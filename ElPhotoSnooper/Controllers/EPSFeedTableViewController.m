@@ -52,11 +52,11 @@
     EPSFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                             forIndexPath:indexPath];
     
-    NSInteger row = indexPath.row;
-    NSURL *imageUrl = [_feedStorage getImageUrlForElementInStorageWithIndex:row];
-    NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:row];
-    NSInteger commentsCount = [_feedStorage getCommentsCountForElementInStorageWithIndex:row];
-    NSArray *comments = [_feedStorage getCommentsForElementInStorageWithIndex:row];
+    NSInteger section = indexPath.section;
+    NSURL *imageUrl = [_feedStorage getImageUrlForElementInStorageWithIndex:section];
+    NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:section];
+    NSInteger commentsCount = [_feedStorage getCommentsCountForElementInStorageWithIndex:section];
+    NSArray *comments = [_feedStorage getCommentsForElementInStorageWithIndex:section];
     
     [cell prepareCellWithImageUrl:imageUrl
                     andLikesCount:likesCount

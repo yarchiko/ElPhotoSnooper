@@ -112,34 +112,36 @@
         InstagramUser *user = comment.user;
         NSString *username = user.username;
         NSString *commentText = comment.text;
+        if (![commentText isEqualToString:@""]) {
+            const CGFloat fontSize = 13;
+            UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+            UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+            UIColor *foregroundColor = [UIColor whiteColor];
+            
+            /**
+             *  Создание аттрибутов
+             */
+            NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   boldFont, NSFontAttributeName,
+                                   foregroundColor, NSForegroundColorAttributeName, nil];
+            NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      regularFont, NSFontAttributeName, nil];
+            /**
+             *  Жёсткая расстановка диапазона разметки, для теста. Переписать.
+             */
+            const NSRange range = NSMakeRange(1,1);
+            
+            /**
+             Создание attributedString из текста и аттрибутов
+             */
+            NSMutableAttributedString *attributedText =
+            [[NSMutableAttributedString alloc] initWithString:commentText
+                                                   attributes:attrs];
+            [attributedText setAttributes:subAttrs range:range];
+            
+            [commentMutableArray addObject:attributedText];
+        }
         
-        const CGFloat fontSize = 13;
-        UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
-        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
-        UIColor *foregroundColor = [UIColor whiteColor];
-        
-        /**
-         *  Создание аттрибутов
-         */
-        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                               boldFont, NSFontAttributeName,
-                               foregroundColor, NSForegroundColorAttributeName, nil];
-        NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  regularFont, NSFontAttributeName, nil];
-        /**
-         *  Жёсткая расстановка диапазона разметки, для теста. Переписать.
-         */
-        const NSRange range = NSMakeRange(2,4);
-        
-        /**
-         Создание attributedString из текста и аттрибутов
-         */
-        NSMutableAttributedString *attributedText =
-        [[NSMutableAttributedString alloc] initWithString:commentText
-                                               attributes:attrs];
-        [attributedText setAttributes:subAttrs range:range];
-        
-        [commentMutableArray addObject:attributedText];
     }
     
     comments = commentMutableArray;
