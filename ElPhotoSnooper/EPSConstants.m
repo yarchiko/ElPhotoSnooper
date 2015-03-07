@@ -12,4 +12,7 @@
 NSString *const INSTAGRAM_USER_ACCESS_TOKEN = @"userAccessToken";
 
 // Cells identifiers
-FOUNDATION_EXPORT NSString *const FEED_CELL_REUSE_IDENTIFIER = @"feedCellReuseIdentifier";
+NSString *const FEED_CELL_REUSE_IDENTIFIER = @"feedCellReuseIdentifier";
+
+// Segues
+NSString *const SEGUE_TO_AUTH_SCREEN = @"segueToAuthScreen";

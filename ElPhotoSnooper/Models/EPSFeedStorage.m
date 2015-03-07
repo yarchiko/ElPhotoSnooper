@@ -8,6 +8,7 @@
 
 #import "EPSFeedStorage.h"
 #import "EPSConstants.h"
+#import <InstagramKit/InstagramKit.h>
 
 @implementation EPSFeedStorage
 

@@ -22,7 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _feedStorage = [[EPSFeedStorage alloc] init];
-    
+    BOOL isUserAuthed = [self isUserAuthed];
+    if (!isUserAuthed) {
+        [self performSegueWithIdentifier:SEGUE_TO_AUTH_SCREEN sender:self];
+    }
+}
+
+- (BOOL)isUserAuthed {
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:INSTAGRAM_USER_ACCESS_TOKEN];
+    BOOL isAccessTokenBlank = [accessToken isEqualToString:@""];
+    if (isAccessTokenBlank) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Table view data source
