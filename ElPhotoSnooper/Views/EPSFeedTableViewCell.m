@@ -41,8 +41,10 @@
      */
     if (justConfig) {
         /**
-         *  Не рисовать изображение если только просчёт.
+         *  Просчитывать с помощью НЕ placeholder'a а сразу нормального изображения
+         *  Оно всё равно кешируется и второй раз не скачается
          */
+        [_image sd_setImageWithURL:imageUrl];
     }
     else {
         [_image sd_setImageWithURL:imageUrl
