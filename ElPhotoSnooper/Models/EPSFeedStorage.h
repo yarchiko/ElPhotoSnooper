@@ -13,6 +13,7 @@
 @protocol EPSFeedStorageDelegate <NSObject>
 
 - (void)updateViewWithFreshData;
+- (void)updateLikedPhotoForIndex:(NSInteger)index;
 
 @end
 
@@ -79,4 +80,12 @@
  *  @return массив комментариев для элемента
  */
 - (NSArray *)getCommentsForElementInStorageWithIndex:(NSInteger)index;
+/**
+ *  Получение флага - лайкнул ли текущий пользователь элемент с индексом
+ *
+ *  @param index индекс элемента в массиве
+ *
+ *  @return YES если лайкнул
+ */
+- (BOOL)userHasLikedElementWithIndex:(NSInteger)index;
 @end

@@ -11,11 +11,15 @@
 
 @interface EPSFeedTableViewCell ()
 
+@property (nonatomic, assign) BOOL isLiked;
+
+// UI elements
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
 
+// Constraints
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *commentsBottomConstraint;
 
 @end
@@ -25,7 +29,8 @@
 - (void) prepareCellWithImageUrl:(NSURL *)imageUrl
                    andLikesCount:(NSInteger)likesCount
                 andCommentsCount:(NSInteger)commentsCount
-                     andComments:(NSArray *)comments {
+                     andComments:(NSArray *)comments
+                        andLiked:(BOOL)liked {
     [_image sd_setImageWithURL:imageUrl];
     
     /**
@@ -41,9 +46,13 @@
     _likeButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [_likeButton setTitle:stringForLikesCountButton forState:UIControlStateNormal];
     
+    
+    if (liked) {
+        _isLiked = YES;
+        _likeButton.tintColor = [UIColor redColor];
+    }
     [_likeButton sizeToFit];
     
-    _commentsLabel.text = @"";
     NSMutableAttributedString *mutableCommentsString = [[NSMutableAttributedString alloc] init];
     NSInteger commentsCountOfLastComments = [comments count];
     
@@ -80,9 +89,20 @@
 - (void)prepareForReuse {
     _commentsCountLabel.text = @"";
     _commentsLabel.text = @"";
+    
     _likeButton.titleLabel.text = @"";
+    _likeButton.tintColor = [[[UIApplication sharedApplication] keyWindow] tintColor];
+    _isLiked = NO;
+    
     [self setNeedsUpdateConstraints];
     [self.layer removeAllAnimations];
+}
+
+- (void)setLikedStateWithState:(BOOL)userHasLiked {
+    if (userHasLiked) {
+        _isLiked = YES;
+        _likeButton.tintColor = [UIColor redColor];
+    }
 }
 
 @end

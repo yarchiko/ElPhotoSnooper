@@ -157,6 +157,13 @@
     return comments;
 }
 
+- (BOOL)userHasLikedElementWithIndex:(NSInteger)index {
+    InstagramMedia *instagramMedia = _feedArray[index];
+    BOOL userHasLiked = instagramMedia.userHasLiked;
+    
+    return userHasLiked;
+}
+
 #pragma mark - Authorisation checking/reading
 
 - (BOOL)isUserAuthed {
@@ -174,7 +181,7 @@
  */
 - (NSString *)getUserAccessToken {
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:INSTAGRAM_USER_ACCESS_TOKEN];
-    
+    NSLog(@"AT:%@", accessToken);
     return accessToken;
 }
 

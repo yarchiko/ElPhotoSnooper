@@ -16,10 +16,17 @@
  *  @param likesCount    общее количество лайков
  *  @param commentsCount общее количество комментариев
  *  @param comments      последние комментарии (до 8)
+ *  @param liked         лайкнуто фото текущим пользователем или нет
  */
 - (void) prepareCellWithImageUrl:(NSURL *)imageUrl
                    andLikesCount:(NSInteger)likesCount
                 andCommentsCount:(NSInteger)commentsCount
-                     andComments:(NSArray *)comments;
-
+                     andComments:(NSArray *)comments
+                        andLiked:(BOOL)liked;
+/**
+ *  Установка лайкнуто ли фото пользователем или нет
+ *
+ *  @param liked <#liked description#>
+ */
+- (void)setLikedStateWithState:(BOOL)userHasLiked;
 @end

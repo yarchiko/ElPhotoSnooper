@@ -9,13 +9,10 @@
 #import "AppDelegate.h"
 #import "EPSConstants.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self createDefaultSettings];
     
     return YES;

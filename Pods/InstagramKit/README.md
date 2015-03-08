@@ -9,6 +9,8 @@ It’s neat, fast and works like a charm providing an easy interface to interact
 
 
 #### Changelog:
+Version 3.5.0 includes accessors for relationship endpoints to follow, unfollow, block, unblock, approve or deny other users.
+
 Version 3.1.0 adds support for seamless pagination.
 
 Read about implementing Pagination effortlessly in the [Pagination Wiki](https://github.com/shyambhat/InstagramKit/wiki/Pagination).
@@ -21,11 +23,11 @@ Getting started is easy. Just include the files from the directory 'InstagramKit
 
 ##### Cocoapods Podfile:
 ```ruby
-pod 'InstagramKit', '3.1.1'
+pod 'InstagramKit', '3.5.0'
 ```
 #### Instagram Developer Registration
 Head over to http://instagram.com/developer/clients/manage/ to register your app with Instagram and insert the right credentials in InstagramKit.plist. 
-If you prefer the Info.plist for all your app settings, you can include these keys in directly in your info.plist file.
+If you prefer the Info.plist for all your app settings, you can include these keys directly in your info.plist file.
 
 
 
@@ -33,7 +35,7 @@ If you prefer the Info.plist for all your app settings, you can include these ke
 
 Download and run the Demo Project to understand how the engine is intended to be used. 
 
-<img src='https://raw2.github.com/shyambhat/InstagramKit/master/InstagramKitDemo/Instagramkit_demo.png' alt='Screenshot' width=310.5 height=625.5 />
+<img src='https://raw.githubusercontent.com/shyambhat/InstagramKit/master/InstagramKitDemo/Instagramkit_demo.png' alt='Screenshot' width=310.5 height=625.5 />
 
 
 

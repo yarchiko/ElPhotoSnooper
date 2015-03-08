@@ -100,17 +100,24 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:section];
     NSInteger commentsCount = [_feedStorage getCommentsCountForElementInStorageWithIndex:section];
     NSArray *comments = [_feedStorage getCommentsForElementInStorageWithIndex:section];
-    
+    BOOL userHasLiked = [_feedStorage userHasLikedElementWithIndex:section];
     [cell prepareCellWithImageUrl:imageUrl
                     andLikesCount:likesCount
                  andCommentsCount:commentsCount
-                      andComments:comments];
+                      andComments:comments
+                         andLiked:userHasLiked];
 }
 
 #pragma mark - EPSFeedStorageDelegate
 
 - (void)updateViewWithFreshData {
     [self.tableView reloadData];
+}
+
+- (void)updateLikedPhotoForIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
+    EPSFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
+                                                                      forIndexPath:indexPath];
 }
 
 #pragma mark - Respoder rewrite
