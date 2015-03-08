@@ -111,37 +111,45 @@
     for (InstagramComment *comment in comments) {
         InstagramUser *user = comment.user;
         NSString *username = user.username;
+
+        UIFontDescriptor *usernameFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+        UIFontDescriptor *usernameFontDescriptor2 = [usernameFontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+        UIFont *myFont = [UIFont fontWithDescriptor:usernameFontDescriptor2 size:0.0];
+        NSDictionary *usernameAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                               myFont, NSFontAttributeName,
+                               [UIColor blackColor], NSForegroundColorAttributeName, nil];
+        
+        NSAttributedString *usernameAttributedFinalText =
+        [[NSAttributedString alloc] initWithString:username
+                                               attributes:usernameAttributes];
+        
+        NSMutableAttributedString *finalMutableAttributedString = [[NSMutableAttributedString alloc] initWithString:@"@"];
+        
+        [finalMutableAttributedString appendAttributedString:usernameAttributedFinalText];
+        NSMutableAttributedString *delimiter = [[NSMutableAttributedString alloc] initWithString:@": "];
+        [finalMutableAttributedString appendAttributedString:delimiter];
+        
         NSString *commentText = comment.text;
         if (![commentText isEqualToString:@""]) {
-            const CGFloat fontSize = 13;
-            UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
-            UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
-            UIColor *foregroundColor = [UIColor whiteColor];
-            
+            UIFontDescriptor *commentFontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+            UIFont *commentFont = [UIFont fontWithDescriptor:commentFontDescriptor size:0.0];
             /**
              *  Создание аттрибутов
              */
-            NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   boldFont, NSFontAttributeName,
-                                   foregroundColor, NSForegroundColorAttributeName, nil];
-            NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      regularFont, NSFontAttributeName, nil];
-            /**
-             *  Жёсткая расстановка диапазона разметки, для теста. Переписать.
-             */
-            const NSRange range = NSMakeRange(1,1);
+            NSDictionary *commentAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                commentFont, NSFontAttributeName,
+                                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
             
             /**
              Создание attributedString из текста и аттрибутов
              */
-            NSMutableAttributedString *attributedText =
-            [[NSMutableAttributedString alloc] initWithString:commentText
-                                                   attributes:attrs];
-            [attributedText setAttributes:subAttrs range:range];
+            NSAttributedString *commentFinalAttributedString =
+            [[NSAttributedString alloc] initWithString:commentText
+                                                   attributes:commentAttributes];
+            [finalMutableAttributedString appendAttributedString:commentFinalAttributedString];
             
-            [commentMutableArray addObject:attributedText];
         }
-        
+        [commentMutableArray addObject:finalMutableAttributedString];
     }
     
     comments = commentMutableArray;

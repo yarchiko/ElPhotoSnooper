@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -76,16 +77,61 @@
         <scene sceneID="esh-ch-jTk">
             <objects>
                 <tableViewController id="TXO-Fj-nib" customClass="EPSFeedTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EHA-3t-vA9">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="388" sectionHeaderHeight="22" sectionFooterHeight="22" id="EHA-3t-vA9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCellReuseIdentifier" id="a5r-aV-p2U" customClass="EPSFeedTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="feedCellReuseIdentifier" id="a5r-aV-p2U" customClass="EPSFeedTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5r-aV-p2U" id="vwz-GY-bSW">
+                                <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5r-aV-p2U" id="vwz-GY-bSW">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-RK-4Ix">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5NY-RK-4Ix" secondAttribute="height" multiplier="1:1" id="nfg-NI-FrQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Comments count" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9T-Ug-GCv">
+                                            <rect key="frame" x="10" y="330" width="300" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak8-1E-FMB">
+                                            <rect key="frame" x="10" y="358" width="300" height="19.5"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5NY-RK-4Ix" firstAttribute="leading" secondItem="vwz-GY-bSW" secondAttribute="leading" id="0ni-CQ-hkM"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ak8-1E-FMB" secondAttribute="trailing" constant="10" id="E9n-vZ-v0L"/>
+                                        <constraint firstItem="Ak8-1E-FMB" firstAttribute="top" secondItem="u9T-Ug-GCv" secondAttribute="bottom" constant="10" id="Eb4-Ts-sFw"/>
+                                        <constraint firstAttribute="trailing" secondItem="u9T-Ug-GCv" secondAttribute="trailing" constant="10" id="IUO-hr-gwv"/>
+                                        <constraint firstAttribute="trailing" secondItem="5NY-RK-4Ix" secondAttribute="trailing" id="N5a-WT-d0w"/>
+                                        <constraint firstItem="5NY-RK-4Ix" firstAttribute="top" secondItem="vwz-GY-bSW" secondAttribute="top" id="RMW-9I-JEu"/>
+                                        <constraint firstItem="u9T-Ug-GCv" firstAttribute="leading" secondItem="vwz-GY-bSW" secondAttribute="leading" constant="10" id="YTM-ft-TbN"/>
+                                        <constraint firstItem="u9T-Ug-GCv" firstAttribute="top" secondItem="5NY-RK-4Ix" secondAttribute="bottom" constant="10" id="eOa-8x-dpW"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ak8-1E-FMB" secondAttribute="bottom" priority="999" constant="10" id="hWT-Ju-GR5"/>
+                                        <constraint firstItem="Ak8-1E-FMB" firstAttribute="leading" secondItem="vwz-GY-bSW" secondAttribute="leading" constant="10" id="odb-dh-0ez"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentsBottomConstraint" destination="hWT-Ju-GR5" id="77f-gl-awQ"/>
+                                    <outlet property="commentsCountLabel" destination="u9T-Ug-GCv" id="BGe-XH-E5N"/>
+                                    <outlet property="commentsLabel" destination="Ak8-1E-FMB" id="AzX-gZ-m2x"/>
+                                    <outlet property="image" destination="5NY-RK-4Ix" id="aQg-rT-WFX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
