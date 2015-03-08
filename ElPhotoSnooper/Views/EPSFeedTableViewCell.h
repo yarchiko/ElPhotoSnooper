@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface EPSFeedTableViewCell : UITableViewCell
-
+/**
+ *  Заполнение ячейки исходя из параметров, поступивших извне
+ *
+ *  @param imageUrl      ссылка на фото
+ *  @param likesCount    общее количество лайков
+ *  @param commentsCount общее количество комментариев
+ *  @param comments      последние комментарии (до 8)
+ */
 - (void) prepareCellWithImageUrl:(NSURL *)imageUrl
                    andLikesCount:(NSInteger)likesCount
                 andCommentsCount:(NSInteger)commentsCount

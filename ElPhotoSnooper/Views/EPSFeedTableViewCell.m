@@ -29,16 +29,19 @@
     [_image sd_setImageWithURL:imageUrl];
     
     /**
-     *  Возвращает emoji-знак комметария и количесвто комментариев
+     *  Возвращает emoji-знак комметария и количество комментариев
      */
     NSString *stringForCommentsCountsLabel = [[NSString alloc] initWithFormat:@"%@ %ld", @"\xF0\x9F\x92\xAC", (long)commentsCount];
     _commentsCountLabel.text = stringForCommentsCountsLabel;
-    
     _commentsCountLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    NSString *wordForLikeCountButton = NSLocalizedString(@"Лайков:", @"Количество лайков- button в ленте пользователя");
+    NSString *wordForLikeCountButton = NSLocalizedString(@"\xE2\x9D\xA4", @"Количество лайков- button в ленте пользователя");
     NSString *stringForLikesCountButton = [[NSString alloc] initWithFormat:@"%@ %ld", wordForLikeCountButton, (long)likesCount];
-    _likeButton.titleLabel.text = stringForLikesCountButton;
+    //_likeButton.titleLabel.text = stringForLikesCountButton;
+    _likeButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [_likeButton setTitle:stringForLikesCountButton forState:UIControlStateNormal];
+    
+    [_likeButton sizeToFit];
     
     _commentsLabel.text = @"";
     NSMutableAttributedString *mutableCommentsString = [[NSMutableAttributedString alloc] init];
@@ -64,14 +67,20 @@
     [super layoutSubviews];
     
     [self.contentView layoutIfNeeded];
+
     [_commentsCountLabel sizeToFit];
-    _commentsLabel.preferredMaxLayoutWidth = CGRectGetWidth(_commentsLabel.frame);
     _commentsCountLabel.preferredMaxLayoutWidth = CGRectGetWidth(_commentsCountLabel.frame);
+    
+    [_likeButton sizeToFit];
+    _likeButton.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth(_likeButton.titleLabel.frame);
+    
+    _commentsLabel.preferredMaxLayoutWidth = CGRectGetWidth(_commentsLabel.frame);
 }
 
 - (void)prepareForReuse {
     _commentsCountLabel.text = @"";
     _commentsLabel.text = @"";
+    _likeButton.titleLabel.text = @"";
     [self setNeedsUpdateConstraints];
     [self.layer removeAllAnimations];
 }
