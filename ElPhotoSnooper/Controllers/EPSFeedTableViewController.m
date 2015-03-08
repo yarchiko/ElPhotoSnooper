@@ -26,13 +26,6 @@
     
     [self preparationsInController];
     
-    /**
-     *  Не очень нравится идея перезаписывать respondsToSelector
-     *  Но есть свои плюсы, например система не тратит ресурсы на вызов и просчёт через heightForRowAtIndexPath
-     */
-    if (![self respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-    }
     BOOL isUserAuthed = [_feedStorage isUserAuthed];
     if (!isUserAuthed) {
         [self performSegueWithIdentifier:SEGUE_TO_AUTH_SCREEN
@@ -42,14 +35,19 @@
         [_feedStorage getUserFeed];
         _alreadyLoadingNextPage = YES;
     }
-
-    
 }
 
 - (void)preparationsInController {
     _feedStorage = [[EPSFeedStorage alloc] init];
     _feedStorage.feedStorageDelegate = self;
-    
+    /**
+     *  Не очень нравится идея перезаписывать respondsToSelector
+     *  Но есть свои плюсы, например система не тратит ресурсы на вызов и просчёт через heightForRowAtIndexPath
+     */
+    if (![self respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 388.0f;
+    }
     /**
      По рефрешу - получение свежих записей
      */
