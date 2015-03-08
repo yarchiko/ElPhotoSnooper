@@ -87,7 +87,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5r-aV-p2U" id="vwz-GY-bSW">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-RK-4Ix">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MediaPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-RK-4Ix">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="5NY-RK-4Ix" secondAttribute="height" multiplier="1:1" id="nfg-NI-FrQ"/>
@@ -163,4 +163,7 @@
             <point key="canvasLocation" x="-522" y="331"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MediaPlaceholder" width="320" height="320"/>
+    </resources>
 </document>

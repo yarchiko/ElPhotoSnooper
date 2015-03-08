@@ -22,7 +22,8 @@
                    andLikesCount:(NSInteger)likesCount
                 andCommentsCount:(NSInteger)commentsCount
                      andComments:(NSArray *)comments
-                        andLiked:(BOOL)liked;
+                        andLiked:(BOOL)liked
+                   andJustConfig:(BOOL)justConfig;
 /**
  *  Установка лайкнуто ли фото пользователем или нет
  *

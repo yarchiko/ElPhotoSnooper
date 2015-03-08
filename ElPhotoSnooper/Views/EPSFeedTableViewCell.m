@@ -30,10 +30,25 @@
                    andLikesCount:(NSInteger)likesCount
                 andCommentsCount:(NSInteger)commentsCount
                      andComments:(NSArray *)comments
-                        andLiked:(BOOL)liked {
+                        andLiked:(BOOL)liked
+                   andJustConfig:(BOOL)justConfig {
     
+    _image.contentMode = UIViewContentModeScaleAspectFill;
+    _image.clipsToBounds = YES;
     UIImage *placeholderImage = [UIImage imageNamed:@"MediaPlaceholder.png"];
-    [_image sd_setImageWithURL:imageUrl placeholderImage:placeholderImage];
+    /**
+     *  Если мы вызываем метод только для просчёта высоты
+     */
+    if (justConfig) {
+        /**
+         *  Не рисовать изображение если только просчёт.
+         */
+    }
+    else {
+        [_image sd_setImageWithURL:imageUrl
+                  placeholderImage:placeholderImage];
+    }
+    
     /**
      *  Возвращает emoji-знак комметария и количество комментариев
      */
