@@ -164,6 +164,13 @@
     return userHasLiked;
 }
 
+-(NSString *)getMediaLinkWithIndex:(NSInteger)index {
+    InstagramMedia *instagramMedia = _feedArray[index];
+    NSString *link = instagramMedia.link;
+    
+    return link;
+}
+
 #pragma mark - Authorisation checking/reading
 
 - (BOOL)isUserAuthed {

@@ -32,10 +32,6 @@
                      andComments:(NSArray *)comments
                         andLiked:(BOOL)liked
                    andJustConfig:(BOOL)justConfig {
-    
-    _image.contentMode = UIViewContentModeScaleAspectFill;
-    _image.clipsToBounds = YES;
-    UIImage *placeholderImage = [UIImage imageNamed:@"MediaPlaceholder.png"];
     /**
      *  Если мы вызываем метод только для просчёта высоты
      */
@@ -47,6 +43,7 @@
         [_image sd_setImageWithURL:imageUrl];
     }
     else {
+        UIImage *placeholderImage = [UIImage imageNamed:@"MediaPlaceholder.png"];
         [_image sd_setImageWithURL:imageUrl
                   placeholderImage:placeholderImage];
     }

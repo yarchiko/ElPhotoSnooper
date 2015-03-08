@@ -88,4 +88,13 @@
  *  @return YES если лайкнул
  */
 - (BOOL)userHasLikedElementWithIndex:(NSInteger)index;
+/**
+ *  Получение строковой ссылки на медиа
+ *
+ *  @param index индекс элемента в массиве
+ *
+ *  @return строковое представление ссылки для медиа-элемента
+ */
+-(NSString *)getMediaLinkWithIndex:(NSInteger)index;
+
 @end

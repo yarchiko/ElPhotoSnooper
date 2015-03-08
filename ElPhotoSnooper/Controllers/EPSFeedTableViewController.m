@@ -16,6 +16,7 @@
 @property (nonatomic, strong) EPSFeedStorage *feedStorage;
 @property (nonatomic, strong) EPSFeedTableViewCell *prototypeCell;
 @property (nonatomic, assign) BOOL alreadyLoadingNextPage;
+@property (nonatomic, strong) NSMutableDictionary *cachedCellHeights;
 
 @end
 
@@ -40,6 +41,7 @@
 - (void)preparationsInController {
     _feedStorage = [[EPSFeedStorage alloc] init];
     _feedStorage.feedStorageDelegate = self;
+    _cachedCellHeights = [NSMutableDictionary dictionary];
     /**
      *  Не очень нравится идея перезаписывать respondsToSelector
      *  Но есть свои плюсы, например система не тратит ресурсы на вызов и просчёт через heightForRowAtIndexPath
@@ -102,16 +104,28 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER];
     }
     
+    NSInteger section = indexPath.section;
+    NSString *linkID = [_feedStorage getMediaLinkWithIndex:section];
+    
+    NSNumber *cachedHeight = _cachedCellHeights[linkID];
+    if (cachedHeight != nil) {
+        return [cachedHeight floatValue];
+    }
+    
     [self configureCell:_prototypeCell
       forRowAtIndexPath:indexPath
           andJustConfig:YES];
-    
     [_prototypeCell layoutIfNeeded];
     CGSize size = [_prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
     /**
      *  Добавляем 1 к высоте из-за delimiter
      */
-    return size.height + 1.0;
+    CGFloat heightToReturn = size.height + 1;
+    
+    _cachedCellHeights[linkID] = @(heightToReturn);
+    
+    return heightToReturn;
 }
 
 #pragma mark - Configure
@@ -146,9 +160,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)updateLikedPhotoForIndex:(NSInteger)index {
+    /*
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
     EPSFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                                       forIndexPath:indexPath];
+     */
 }
 
 #pragma mark - Respoder rewrite
