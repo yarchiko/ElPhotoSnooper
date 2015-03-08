@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) EPSFeedStorage *feedStorage;
 @property (nonatomic, strong) EPSFeedTableViewCell *prototypeCell;
+@property (nonatomic, assign) BOOL alreadyLoadingNextPage;
 
 @end
 
@@ -39,6 +40,7 @@
     }
     else {
         [_feedStorage getUserFeed];
+        _alreadyLoadingNextPage = YES;
     }
 
     
@@ -78,7 +80,7 @@
 }
 
 - (EPSFeedTableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+              cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EPSFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                                  forIndexPath:indexPath];
     [self configureCell:cell
@@ -95,7 +97,7 @@ titleForHeaderInSection:(NSInteger)section {
     return username;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView
+- (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (!_prototypeCell) {
@@ -138,10 +140,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     /**
      *  Чтобы избежать "промаргивания" фото при обновлении
      */
-    self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
+    //self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
     
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
+    _alreadyLoadingNextPage = NO;
 }
 
 - (void)updateLikedPhotoForIndex:(NSInteger)index {
@@ -164,6 +167,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     return [super respondsToSelector:selector];
+}
+
+#pragma mark - Scroll Delegate
+/**
+ *  Проверка положиения прокрутки
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat actualPosition = self.tableView.contentOffset.y;
+    CGFloat contentHeight = self.tableView.contentSize.height - (700.0f);
+    
+    if ((actualPosition >= contentHeight)&&(!_alreadyLoadingNextPage)) {
+        _alreadyLoadingNextPage = YES;
+        [_feedStorage getUserFeed];
+    }
 }
 
 @end
