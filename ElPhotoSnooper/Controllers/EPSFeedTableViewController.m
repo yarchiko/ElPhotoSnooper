@@ -81,7 +81,9 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EPSFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                                  forIndexPath:indexPath];
-    [self configureCell:cell forRowAtIndexPath:indexPath];
+    [self configureCell:cell
+      forRowAtIndexPath:indexPath
+          andJustConfig:NO];
     
     return cell;
 }
@@ -101,7 +103,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     [self configureCell:_prototypeCell
-      forRowAtIndexPath:indexPath];
+      forRowAtIndexPath:indexPath
+          andJustConfig:YES];
     
     [_prototypeCell layoutIfNeeded];
     CGSize size = [_prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
@@ -114,8 +117,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Configure
 
 - (void)configureCell:(EPSFeedTableViewCell *)cell
-    forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+    forRowAtIndexPath:(NSIndexPath *)indexPath andJustConfig:(BOOL)justConfig {
     NSInteger section = indexPath.section;
     NSURL *imageUrl = [_feedStorage getImageUrlForElementInStorageWithIndex:section];
     NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:section];
@@ -126,7 +128,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                     andLikesCount:likesCount
                  andCommentsCount:commentsCount
                       andComments:comments
-                         andLiked:userHasLiked];
+                         andLiked:userHasLiked
+                    andJustConfig:justConfig];
 }
 
 #pragma mark - EPSFeedStorageDelegate
