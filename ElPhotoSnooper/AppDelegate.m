@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EPSConstants.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation AppDelegate
 
@@ -21,6 +22,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 - (void)createDefaultSettings {
     NSDictionary* defaults = @{INSTAGRAM_USER_ACCESS_TOKEN:@""};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
+/**
+ *  Выполнение всех методов AFNetworking которые нужно выполнить один раз для всего приложения
+ */
+- (void)manageAFNetworking {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 }
 
 @end

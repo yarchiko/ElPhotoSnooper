@@ -172,6 +172,7 @@
     if (isAccessTokenBlank) {
         return NO;
     }
+    
     return YES;
 }
 /**
@@ -181,7 +182,7 @@
  */
 - (NSString *)getUserAccessToken {
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:INSTAGRAM_USER_ACCESS_TOKEN];
-    NSLog(@"AT:%@", accessToken);
+
     return accessToken;
 }
 

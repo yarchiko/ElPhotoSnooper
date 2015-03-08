@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _feedStorage = [[EPSFeedStorage alloc] init];
-    _feedStorage.feedStorageDelegate = self;
+    
+    [self preparationsInController];
     
     /**
      *  Не очень нравится идея перезаписывать respondsToSelector
@@ -39,6 +39,27 @@
     }
     else {
         [_feedStorage getUserFeed];
+    }
+
+    
+}
+
+- (void)preparationsInController {
+    _feedStorage = [[EPSFeedStorage alloc] init];
+    _feedStorage.feedStorageDelegate = self;
+    
+    /**
+     По рефрешу - получение свежих записей
+     */
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(reloadFeed)
+                  forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)reloadFeed {
+    if (_feedStorage) {
+        [_feedStorage reloadUserFeed];
     }
 }
 
@@ -111,6 +132,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - EPSFeedStorageDelegate
 
 - (void)updateViewWithFreshData {
+    /**
+     *  Чтобы избежать "промаргивания" фото при обновлении
+     */
+    self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
+    
+    [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
 
