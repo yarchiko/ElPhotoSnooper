@@ -15,6 +15,9 @@
 		947B2EEC1AAB103A0078A3A8 /* EPSConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2EEB1AAB103A0078A3A8 /* EPSConstants.m */; };
 		947B2EF71AAB27FF0078A3A8 /* IKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */; };
 		947B2EF91AAB2DD60078A3A8 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 947B2EF81AAB2DD60078A3A8 /* InstagramKit.plist */; };
+		947B2EFF1AAB39330078A3A8 /* EPSFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2EFE1AAB39330078A3A8 /* EPSFeedTableViewController.m */; };
+		947B2F031AAB3A750078A3A8 /* EPSFeedStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2F021AAB3A750078A3A8 /* EPSFeedStorage.m */; };
+		947B2F131AAB3E6E0078A3A8 /* EPSFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 947B2F121AAB3E6E0078A3A8 /* EPSFeedTableViewCell.m */; };
 		D668B169C17A0D39CA4E028A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB764B34B9AE4E50CC80BEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,12 @@
 		947B2EF51AAB27FF0078A3A8 /* IKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKLoginViewController.h; sourceTree = "<group>"; };
 		947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKLoginViewController.m; sourceTree = "<group>"; };
 		947B2EF81AAB2DD60078A3A8 /* InstagramKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstagramKit.plist; sourceTree = "<group>"; };
+		947B2EFD1AAB39330078A3A8 /* EPSFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPSFeedTableViewController.h; path = Controllers/EPSFeedTableViewController.h; sourceTree = "<group>"; };
+		947B2EFE1AAB39330078A3A8 /* EPSFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPSFeedTableViewController.m; path = Controllers/EPSFeedTableViewController.m; sourceTree = "<group>"; };
+		947B2F011AAB3A750078A3A8 /* EPSFeedStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPSFeedStorage.h; path = Models/EPSFeedStorage.h; sourceTree = "<group>"; };
+		947B2F021AAB3A750078A3A8 /* EPSFeedStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPSFeedStorage.m; path = Models/EPSFeedStorage.m; sourceTree = "<group>"; };
+		947B2F111AAB3E6E0078A3A8 /* EPSFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPSFeedTableViewCell.h; path = Views/EPSFeedTableViewCell.h; sourceTree = "<group>"; };
+		947B2F121AAB3E6E0078A3A8 /* EPSFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPSFeedTableViewCell.m; path = Views/EPSFeedTableViewCell.m; sourceTree = "<group>"; };
 		B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +117,8 @@
 		94152BB81AAB0242008A9AB1 /* ElPhotoSnooper */ = {
 			isa = PBXGroup;
 			children = (
+				947B2F041AAB3B390078A3A8 /* Views */,
+				947B2F001AAB3A460078A3A8 /* Models */,
 				947B2EED1AAB119B0078A3A8 /* Controllers */,
 				94152BBD1AAB0242008A9AB1 /* AppDelegate.h */,
 				94152BBE1AAB0242008A9AB1 /* AppDelegate.m */,
@@ -152,8 +163,28 @@
 			children = (
 				947B2EF51AAB27FF0078A3A8 /* IKLoginViewController.h */,
 				947B2EF61AAB27FF0078A3A8 /* IKLoginViewController.m */,
+				947B2EFD1AAB39330078A3A8 /* EPSFeedTableViewController.h */,
+				947B2EFE1AAB39330078A3A8 /* EPSFeedTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		947B2F001AAB3A460078A3A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				947B2F011AAB3A750078A3A8 /* EPSFeedStorage.h */,
+				947B2F021AAB3A750078A3A8 /* EPSFeedStorage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		947B2F041AAB3B390078A3A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				947B2F111AAB3E6E0078A3A8 /* EPSFeedTableViewCell.h */,
+				947B2F121AAB3E6E0078A3A8 /* EPSFeedTableViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947B2F131AAB3E6E0078A3A8 /* EPSFeedTableViewCell.m in Sources */,
 				94152BBF1AAB0242008A9AB1 /* AppDelegate.m in Sources */,
 				947B2EF71AAB27FF0078A3A8 /* IKLoginViewController.m in Sources */,
+				947B2F031AAB3A750078A3A8 /* EPSFeedStorage.m in Sources */,
 				947B2EEC1AAB103A0078A3A8 /* EPSConstants.m in Sources */,
+				947B2EFF1AAB39330078A3A8 /* EPSFeedTableViewController.m in Sources */,
 				94152BBC1AAB0242008A9AB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +446,7 @@
 			baseConfigurationReference = B74E50086B28EAAEE661D3C3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ElPhotoSnooper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -424,6 +459,7 @@
 			baseConfigurationReference = 3EBCBE523DD105BD065BC515 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ElPhotoSnooper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

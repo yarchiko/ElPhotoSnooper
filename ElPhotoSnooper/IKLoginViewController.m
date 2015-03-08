@@ -59,15 +59,14 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
         NSArray *components = [URLString componentsSeparatedByString:delimiter];
         if (components.count > 1) {
             NSString *accessToken = [components lastObject];
-            
-            NSLog(@"ACCESS TOKEN = %@",accessToken);
-            [[InstagramEngine sharedEngine] setAccessToken:accessToken];
             /**
              *  Знаю, что это не безопасно. Решение выбрано ради скорости реализации.
              */
             [[NSUserDefaults standardUserDefaults] setObject:accessToken
                                                       forKey:INSTAGRAM_USER_ACCESS_TOKEN];
-            
+            NSLog(@"ACCESS TOKEN = %@",accessToken);
+            [[InstagramEngine sharedEngine] setAccessToken:accessToken];
+
             [self dismissViewControllerAnimated:YES completion:^{
                 /**
                  *  Здесь должна быть реализация обновления ленты пользователя из другого контроллера.
