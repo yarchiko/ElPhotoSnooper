@@ -31,8 +31,9 @@
                 andCommentsCount:(NSInteger)commentsCount
                      andComments:(NSArray *)comments
                         andLiked:(BOOL)liked {
-    [_image sd_setImageWithURL:imageUrl];
     
+    UIImage *placeholderImage = [UIImage imageNamed:@"MediaPlaceholder.png"];
+    [_image sd_setImageWithURL:imageUrl placeholderImage:placeholderImage];
     /**
      *  Возвращает emoji-знак комметария и количество комментариев
      */
