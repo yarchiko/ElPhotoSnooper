@@ -10,7 +10,7 @@
         <scene sceneID="tAB-ul-9Hk">
             <objects>
                 <navigationController id="XUl-to-rOC" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Adc-oV-OoF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -32,11 +32,11 @@
                         <viewControllerLayoutGuide type="bottom" id="PtA-uo-m6k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1iA-4j-ts4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c98-mC-WhL">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -78,7 +78,7 @@
             <objects>
                 <tableViewController title="Feed Table View Controller" id="TXO-Fj-nib" customClass="EPSFeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="388" sectionHeaderHeight="44" sectionFooterHeight="22" id="EHA-3t-vA9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -102,7 +102,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Ak8-1E-FMB">
                                             <rect key="frame" x="10" y="358" width="300" height="19.5"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="Label">
+                                                <fragment content="Comments">
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <font key="NSFont" size="15" name="HelveticaNeue"/>
@@ -127,7 +127,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5NY-RK-4Ix" firstAttribute="leading" secondItem="vwz-GY-bSW" secondAttribute="leading" id="0ni-CQ-hkM"/>
-                                        <constraint firstItem="s5f-wJ-snd" firstAttribute="bottom" secondItem="u9T-Ug-GCv" secondAttribute="bottom" id="86T-h0-X9g"/>
+                                        <constraint firstItem="u9T-Ug-GCv" firstAttribute="centerY" secondItem="s5f-wJ-snd" secondAttribute="centerY" id="ASZ-IZ-ilF"/>
                                         <constraint firstAttribute="trailing" secondItem="Ak8-1E-FMB" secondAttribute="trailing" constant="10" id="E9n-vZ-v0L"/>
                                         <constraint firstItem="Ak8-1E-FMB" firstAttribute="top" secondItem="u9T-Ug-GCv" secondAttribute="bottom" constant="10" id="Eb4-Ts-sFw"/>
                                         <constraint firstAttribute="trailing" secondItem="5NY-RK-4Ix" secondAttribute="trailing" id="N5a-WT-d0w"/>
@@ -177,7 +177,7 @@
             <objects>
                 <tableViewController title="Detailed Table View Controller" id="wPP-8O-ida" customClass="EPSDetailedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="44" sectionFooterHeight="22" id="Dp3-YC-SK2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
