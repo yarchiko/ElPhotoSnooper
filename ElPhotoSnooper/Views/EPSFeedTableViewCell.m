@@ -155,10 +155,9 @@
                                                         andSender:self];
 }
 
-#pragma mark executed from the outside
+#pragma mark - executed from the outside
 
 - (void)updateLike {
-    NSLog(@"like update");
     [self setNewLikedStateWithState:_isLiked];
 }
 

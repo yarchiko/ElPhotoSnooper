@@ -26,39 +26,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clearsSelectionOnViewWillAppear = YES;
-    /**
-     *  Не очень нравится идея перезаписывать respondsToSelector
-     *  Но есть свои плюсы, например система не тратит ресурсы на вызов и просчёт через heightForRowAtIndexPath
-     */
-    /*
-    if (![self respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 388.0f;
-    }
-     */
     if (_instagramMedia) {
-        _singleMediaProcessor = [[EPSSingleMediaProcessor alloc] initWithInstagramMedia:_instagramMedia];
-        [_singleMediaProcessor getCommentsForInstagramMediaWithCompletion:^(NSArray *comments) {
-            _arrayOfCommentsStrings = comments;
-            [self.tableView reloadData];
-        }];
-        [_singleMediaProcessor getLikesForInstagramMediaWithCompletion:^(NSArray *likes) {
-            _arrayofLikesStrings = likes;
-            [self.tableView reloadData];
-        }];
+        [self tuneupController];
+        [self loadAsyncData];
     }
 }
 
-#pragma mark - Table view data source
+#pragma mark - Preparations
+
+- (void)tuneupController {
+    _singleMediaProcessor = [[EPSSingleMediaProcessor alloc] initWithInstagramMedia:_instagramMedia];
+    self.title = _instagramMedia.user.username;
+}
+
+- (void)loadAsyncData {
+    [_singleMediaProcessor getCommentsForInstagramMediaWithCompletion:^(NSArray *comments) {
+        _arrayOfCommentsStrings = comments;
+        [self.tableView reloadData];
+    }];
+    [_singleMediaProcessor getLikesForInstagramMediaWithCompletion:^(NSArray *likes) {
+        _arrayofLikesStrings = likes;
+        [self.tableView reloadData];
+    }];
+}
+
+#pragma mark - Table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 3;
+            return 2;
             break;
         case 1:
             return [_arrayOfCommentsStrings count];
@@ -72,6 +74,9 @@
     }
 }
 
+/**
+ *  Метод мягко говоря не идеальный
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView
               cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
@@ -91,23 +96,14 @@
                 switch (indexPath.row) {
                     case 1:
                         if (_instagramMedia.userHasLiked) {
-                            cell.textLabel.text = [NSString stringWithFormat:@"\xE2\x9D\xA4 Всего: %ld",(long)_instagramMedia.likesCount];
-                            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];;
+                            cell.textLabel.text = @"\xE2\x9D\xA4";
+                            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                         }
                         else {
-                            cell.textLabel.text = [NSString stringWithFormat:@"Лайкнуть. Всего: %ld",(long)_instagramMedia.likesCount];
-                            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];;
+                            NSString *likeLocalizedString = NSLocalizedString(@"Лайкнуть", @"Надпись на кнопке для лайканья в детальном виде изображения");
+                            cell.textLabel.text = likeLocalizedString;
+                            cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                         }
-                        break;
-                        
-                    case 2:
-                        cell.textLabel.text = [NSString stringWithFormat:@"%ld комментарий(ев)",(long)_instagramMedia.commentCount];
-                        cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                        break;
-                        
-                    default:
-                        cell.textLabel.text = @"Test";
-                        cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
                         break;
                 }
                 
@@ -139,9 +135,19 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 1) {
+    /**
+     *  Если нажали на строку с лайком - выполнить действие
+     */
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    BOOL isThisLikeCell = (section == 0)&&(row == 1);
+    if (isThisLikeCell) {
+        /**
+         *  Проверка текущего ссостояния медиаэлемента
+         */
         if (!_instagramMedia.userHasLiked) {
             [self like];
         }
@@ -153,20 +159,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return nil;
-            break;
-        case 1:
-            return @"Комментарии";
-            break;
-        case 2:
-            return @"Лайки";
-            break;
-        default:
-            return @"Тест";
-            break;
-    }
+    NSString *headerTitle = [_singleMediaProcessor headerTitleForSection:section];
+    
+    return headerTitle;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -174,29 +169,53 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    
+    /**
+     *  Для самой первой ячейки (где фото) - простановка высоты под фото
+     */
     if (!section && !row) {
         return 320;
     }
+    /**
+     *  Остальные ячейки стандартного размера
+     */
     else {
+        /**
+         *  Для iOS 8 и новее было бы здорово использовать автопросчёт высоты для комментариев
+         */
+        NSString *version = [[UIDevice currentDevice] systemVersion];
+        BOOL isAtLeast8 = [version compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending;
+        if (isAtLeast8) {
+            return UITableViewAutomaticDimension;
+        }
+        /**
+         *  Для более старых ОС
+         */
         return 44;
     }
 }
-
+/**
+ *  Отправка запроса на лайк медиаэлемента и обработка ответа
+ */
 - (void)like {
     [_singleMediaProcessor likeInstagramMediaWithCompletion:^(BOOL completion) {
         if (completion) {
             _instagramMedia.userHasLiked = YES;
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1
+                                                                        inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationBottom];
         }
     }];
 }
-
+/**
+ *  Отправка запроса на анлайк медиаэлемента и обработка ответа
+ */
 - (void)unlike {
     [_singleMediaProcessor unlikeInstagramMediaWithCompletion:^(BOOL completion) {
         if (completion) {
             _instagramMedia.userHasLiked = NO;
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1
+                                                                        inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationBottom];
         }
     }];
 }
