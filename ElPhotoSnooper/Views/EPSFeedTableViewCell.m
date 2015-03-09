@@ -12,6 +12,9 @@
 @interface EPSFeedTableViewCell ()
 
 @property (nonatomic, assign) BOOL isLiked;
+@property (nonatomic, assign) BOOL isLikedFromTheApp;
+@property (nonatomic, strong) NSString *mediaId;
+@property (nonatomic, assign) NSInteger likesCount;
 
 // UI elements
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -26,12 +29,16 @@
 
 @implementation EPSFeedTableViewCell
 
-- (void) prepareCellWithImageUrl:(NSURL *)imageUrl
-                   andLikesCount:(NSInteger)likesCount
-                andCommentsCount:(NSInteger)commentsCount
-                     andComments:(NSArray *)comments
-                        andLiked:(BOOL)liked
-                   andJustConfig:(BOOL)justConfig {
+- (void)prepareCellWithId:(NSString *)Id
+              andImageUrl:(NSURL *)imageUrl
+            andLikesCount:(NSInteger)likesCount
+         andCommentsCount:(NSInteger)commentsCount
+              andComments:(NSArray *)comments
+                 andLiked:(BOOL)liked
+            andJustConfig:(BOOL)justConfig {
+    
+    _mediaId = Id;
+    _likesCount = likesCount;
     /**
      *  Если мы вызываем метод только для просчёта высоты
      */
@@ -55,13 +62,8 @@
     _commentsCountLabel.text = stringForCommentsCountsLabel;
     _commentsCountLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    NSString *wordForLikeCountButton = NSLocalizedString(@"\xE2\x9D\xA4", @"Количество лайков- button в ленте пользователя");
-    NSString *stringForLikesCountButton = [[NSString alloc] initWithFormat:@"%@ %ld", wordForLikeCountButton, (long)likesCount];
-    //_likeButton.titleLabel.text = stringForLikesCountButton;
-    _likeButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    [_likeButton setTitle:stringForLikesCountButton forState:UIControlStateNormal];
-    
-    
+    [self setupLikeButtonForLikesCount:_likesCount];
+
     if (liked) {
         _isLiked = YES;
         _likeButton.tintColor = [UIColor redColor];
@@ -102,6 +104,8 @@
 }
 
 - (void)prepareForReuse {
+    _mediaId = nil;
+    
     _commentsCountLabel.text = @"";
     _commentsLabel.text = @"";
     
@@ -118,6 +122,44 @@
         _isLiked = YES;
         _likeButton.tintColor = [UIColor redColor];
     }
+}
+
+- (void)setNewLikedStateWithState:(BOOL)likedBefore {
+    if (likedBefore) {
+        _isLiked = NO;
+        _likeButton.tintColor = [[[UIApplication sharedApplication] keyWindow] tintColor];
+        _likesCount--;
+    }
+    else {
+        _isLiked = YES;
+        _likeButton.tintColor = [UIColor redColor];
+        _likesCount++;
+    }
+    [self setupLikeButtonForLikesCount:_likesCount];
+}
+
+- (void)setupLikeButtonForLikesCount:(NSInteger)likesCount {
+    NSString *stringForLikesCountButton = [[NSString alloc] initWithFormat:@"%@ %ld", @"\xE2\x9D\xA4", (long)likesCount];
+    _likeButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [_likeButton setTitle:stringForLikesCountButton forState:UIControlStateNormal];
+    [_likeButton sizeToFit];
+}
+
+- (IBAction)likeButtonTouchAction:(id)sender {
+    [self changeLikeStateWithCurrentState:_isLiked];
+}
+
+- (void)changeLikeStateWithCurrentState:(BOOL)state {
+    [self.feedTableViewCellDelegate updateLikeForMediaWithMediaId:_mediaId
+                                                  andCurrentState:_isLiked
+                                                        andSender:self];
+}
+
+#pragma mark executed from the outside
+
+- (void)updateLike {
+    NSLog(@"like update");
+    [self setNewLikedStateWithState:_isLiked];
 }
 
 @end

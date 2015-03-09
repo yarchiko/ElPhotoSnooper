@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <InstagramKit/InstagramKit.h>
+#import "EPSFeedTableViewCell.h"
 
 @protocol EPSFeedStorageDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface EPSFeedStorage : NSObject
+@interface EPSFeedStorage : NSObject <EPSFeedTableViewCellDelegate>
 
 @property (nonatomic, weak) id<EPSFeedStorageDelegate> feedStorageDelegate;
 
@@ -40,6 +41,14 @@
  *  @return YES если access_token найден
  */
 - (BOOL)isUserAuthed;
+/**
+ *  Получение id медиа-элемента
+ *
+ *  @param index  индекс элемента в массиве
+ *
+ *  @return id элемента, который используется для изменения параметров медиа-элемента
+ */
+- (NSString *)getIdForElementInStorageWithIndex:(NSInteger)index;
 /**
  *  Получение username пользователя, загрузившего фото для элемента с индексом
  *

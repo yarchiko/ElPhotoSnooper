@@ -87,7 +87,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a5r-aV-p2U" id="vwz-GY-bSW">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MediaPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-RK-4Ix">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5NY-RK-4Ix">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="5NY-RK-4Ix" secondAttribute="height" multiplier="1:1" id="nfg-NI-FrQ"/>
@@ -120,6 +120,9 @@
                                             <state key="normal" title="Likes count">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="likeButtonTouchAction:" destination="a5r-aV-p2U" eventType="touchUpInside" id="gML-6S-ClQ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -163,7 +166,4 @@
             <point key="canvasLocation" x="-522" y="331"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="MediaPlaceholder" width="320" height="320"/>
-    </resources>
 </document>

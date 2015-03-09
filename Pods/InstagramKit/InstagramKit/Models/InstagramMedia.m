@@ -39,6 +39,8 @@
     self = [super initWithInfo:info];
     if (self && IKNotNull(info)) {
         
+        _mediaId = [[NSString alloc] initWithString:info[kID]];
+        
         _user = [[InstagramUser alloc] initWithInfo:info[kUser]];
         _userHasLiked = [info[kUserHasLiked] boolValue];
         _createdDate = [[NSDate alloc] initWithTimeIntervalSince1970:[info[kCreatedDate] doubleValue]];

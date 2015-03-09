@@ -74,6 +74,13 @@
 
 #pragma mark - Individual entries stuff
 
+- (NSString *)getIdForElementInStorageWithIndex:(NSInteger)index {
+    InstagramMedia *instagramMedia = _feedArray[index];
+    NSString *Id = instagramMedia.Id;
+    
+    return Id;
+}
+
 - (NSString *)getUsernameForElementInStorageWithIndex:(NSInteger)index {
     InstagramMedia *instagramMedia = _feedArray[index];
     InstagramUser *user = instagramMedia.user;
@@ -169,6 +176,31 @@
     NSString *link = instagramMedia.link;
     
     return link;
+}
+
+#pragma mark - change content on behalf
+
+- (void)updateLikeForMediaWithMediaId:(NSString *)mediaId
+                      andCurrentState:(BOOL)state
+                            andSender:(id)sender {
+    NSLog(@"sender: %@", sender);
+    if (state) {
+        [[InstagramEngine sharedEngine] unlikeMedia:mediaId withSuccess:^{
+            if ([sender respondsToSelector:@selector(updateLike)]) {
+                [sender updateLike];
+            }
+            NSLog(@"Media unliked.");
+        } failure:^(NSError *error) {
+            NSLog(@"Error when trying to unlike with error: %@", [error localizedDescription]);
+        }];
+    }
+    else {
+        [[InstagramEngine sharedEngine] likeMedia:mediaId withSuccess:^{
+            NSLog(@"Media liked.");
+        } failure:^(NSError *error) {
+            NSLog(@"Error when trying to like with error: %@", [error localizedDescription]);
+        }];
+    }
 }
 
 #pragma mark - Authorisation checking/reading
