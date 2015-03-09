@@ -111,8 +111,28 @@
 
 - (NSArray *)getCommentsForElementInStorageWithIndex:(NSInteger)index {
     InstagramMedia *instagramMedia = _feedArray[index];
-    NSArray *comments = instagramMedia.comments;
     NSMutableArray *commentMutableArray = [NSMutableArray array];
+    
+    /**
+     *  Подпись к фото
+     */
+    InstagramComment *caption = instagramMedia.caption;
+    NSString *captionString = caption.text;
+    /**
+     *  Проверка подписи на пустоту
+     */
+    BOOL isCaptionNil = (captionString == nil);
+    
+    NSArray *comments = instagramMedia.comments;
+    
+    /**
+     *  Если подпись не пустая - добавление её в массив комментариев в начало
+     */
+    if (!isCaptionNil) {
+        NSMutableArray *mutableComments = [comments mutableCopy];
+        [mutableComments insertObject:caption atIndex:0];
+        comments = mutableComments;
+    }
     
     for (InstagramComment *comment in comments) {
         InstagramUser *user = comment.user;
