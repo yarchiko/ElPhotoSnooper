@@ -42,7 +42,6 @@
             [self loadSelfFeed];
         }
     }
-    
 }
 
 - (void)loadSelfFeed {
@@ -183,24 +182,53 @@
 - (void)updateLikeForMediaWithMediaId:(NSString *)mediaId
                       andCurrentState:(BOOL)state
                             andSender:(id)sender {
-    NSLog(@"sender: %@", sender);
     if (state) {
         [[InstagramEngine sharedEngine] unlikeMedia:mediaId withSuccess:^{
             if ([sender respondsToSelector:@selector(updateLike)]) {
                 [sender updateLike];
             }
-            NSLog(@"Media unliked.");
+            [self updateLikeInArrayForElementWithMediaId:mediaId andNewState:NO];
         } failure:^(NSError *error) {
             NSLog(@"Error when trying to unlike with error: %@", [error localizedDescription]);
         }];
     }
     else {
         [[InstagramEngine sharedEngine] likeMedia:mediaId withSuccess:^{
-            NSLog(@"Media liked.");
+            if ([sender respondsToSelector:@selector(updateLike)]) {
+                [sender updateLike];
+            }
+            [self updateLikeInArrayForElementWithMediaId:mediaId andNewState:YES];
         } failure:^(NSError *error) {
             NSLog(@"Error when trying to like with error: %@", [error localizedDescription]);
         }];
     }
+}
+/**
+ *  Изменение состояния
+ *
+ *  @param mediaId идентификатор медиаэлемента
+ *  @param state   новый статус "лайкнутости" фото
+ */
+- (void)updateLikeInArrayForElementWithMediaId:(NSString *)mediaId
+                                   andNewState:(BOOL)state {
+    NSUInteger indexTochangeLike = [_privateFeedMutableArray indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if ([[(InstagramMedia *)obj Id] isEqualToString:mediaId]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    InstagramMedia *instagramMedia = _privateFeedMutableArray[indexTochangeLike];
+    if (state) {
+        instagramMedia.likesCount++;
+        instagramMedia.userHasLiked = YES;
+    }
+    else {
+        instagramMedia.likesCount--;
+        instagramMedia.userHasLiked = NO;
+    }
+    _privateFeedMutableArray[indexTochangeLike] = instagramMedia;
+    _feedArray = _privateFeedMutableArray;
 }
 
 #pragma mark - Authorisation checking/reading
