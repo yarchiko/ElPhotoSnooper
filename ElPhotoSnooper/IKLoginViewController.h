@@ -20,7 +20,10 @@
 
 #import <UIKit/UIKit.h>
 #import "InstagramKit.h"
+#import "EPSFeedTableViewController.h"
 
 @interface IKLoginViewController : UIViewController
+
+@property (nonatomic, weak) EPSFeedTableViewController *feedTableViewController;
 
 @end

@@ -10,4 +10,9 @@
 
 @interface EPSFeedTableViewController : UITableViewController
 
+/**
+ *  Запускает тот же механизм что и Pull To Refresh
+ */
+- (void)reloadFeedFromOutside;
+
 @end

@@ -69,8 +69,9 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
             [self dismissViewControllerAnimated:YES completion:^{
                 /**
-                 *  Здесь должна быть реализация обновления ленты пользователя из другого контроллера.
+                 *  Обновления ленты пользователя из другого контроллера.
                  */
+                [_feedTableViewController reloadFeedFromOutside];
             }];
         }
         return NO;

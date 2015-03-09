@@ -16,3 +16,4 @@ NSString *const FEED_CELL_REUSE_IDENTIFIER = @"feedCellReuseIdentifier";
 
 // Segues
 NSString *const SEGUE_TO_AUTH_SCREEN = @"segueToAuthScreen";
+NSString *const SEGUE_TO_DETAIL_SCREEN = @"segueToDetailScreen";
