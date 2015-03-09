@@ -36,5 +36,9 @@
  *  @param completion флаг успешности операции
  */
 - (void)unlikeInstagramMediaWithCompletion:(void (^)(BOOL))completion;
+/**
+ *  Генерация заголовков секций таблицы детального вида медиаэлемента
+ */
+- (NSString *)headerTitleForSection:(NSInteger)section;
 
 @end

@@ -33,13 +33,33 @@
     return self;
 }
 
+#pragma mark - Massive async server queries
+
 - (void)getCommentsForInstagramMediaWithCompletion:(void (^)(NSArray *))completion {
     NSString *mediaId = _instagramMedia.Id;
     [_instagramSharedEngine getCommentsOnMedia:mediaId withSuccess:^(NSArray *commentsArrayFromInstagram) {
         
         NSMutableArray *commentMutableArray = [NSMutableArray array];
-        
         NSArray *comments = commentsArrayFromInstagram;
+        
+        /**
+         *  Подпись к фото
+         */
+        InstagramComment *caption = _instagramMedia.caption;
+        NSString *captionString = caption.text;
+        /**
+         *  Проверка подписи на пустоту
+         */
+        BOOL isCaptionNil = (captionString == nil);
+        
+        /**
+         *  Если подпись не пустая - добавление её в массив комментариев в начало
+         */
+        if (!isCaptionNil) {
+            NSMutableArray *mutableComments = [comments mutableCopy];
+            [mutableComments insertObject:caption atIndex:0];
+            comments = mutableComments;
+        }
         
         for (InstagramComment *comment in comments) {
             InstagramUser *user = comment.user;
@@ -71,6 +91,9 @@
         NSLog(@"Could not load likes because of: %@", [error localizedDescription]);
     }];
 }
+
+#pragma mark - Single async server queries
+
 - (void)likeInstagramMediaWithCompletion:(void (^)(BOOL))completion {
     [_instagramSharedEngine likeMedia:_instagramMedia.Id withSuccess:^{
         _instagramMedia.userHasLiked = YES;
@@ -90,6 +113,32 @@
         NSLog(@"Error while unliking: %@", [error localizedDescription]);
         completion(NO);
     }];
+}
+
+#pragma mark - Generate strings for Headers
+
+- (NSString *)headerTitleForSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return nil;
+            break;
+        case 1: {
+            NSString *commentsLocalizedString = NSLocalizedString(@"Комментарии", @"Заголовок секции комментариев детальном виде изображения");
+            NSString *headerForComments = [NSString stringWithFormat:@"%@ (%ld)", commentsLocalizedString, (long)_instagramMedia.commentCount];
+            return headerForComments;
+        }
+            break;
+        case 2: {
+            NSString *likesLocalizedString = NSLocalizedString(@"Лайки", @"Заголовок секции лайков детальном виде изображения");
+            NSString *headerForLikes = [NSString stringWithFormat:@"%@ (%ld)", likesLocalizedString, (long)_instagramMedia.likesCount];
+            return headerForLikes;
+        }
+            break;
+        default:
+            return @"Тест";
+            break;
+    }
+    return @"";
 }
 
 @end

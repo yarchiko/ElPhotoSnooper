@@ -251,7 +251,7 @@
     _feedArray = _privateFeedMutableArray;
 }
 
-#pragma mark - Authorisation checking/reading
+#pragma mark - Authorisation
 
 - (BOOL)isUserAuthed {
     NSString *accessToken = [self getUserAccessToken];
