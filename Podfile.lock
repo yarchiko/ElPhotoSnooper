@@ -36,7 +36,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   InstagramKit:
-    :commit: 258954eebc23099a80b56844357cf526a697c98e
+    :commit: 92b5b01bd4cc084103616c05f2d23f5af6f2c3f7
     :git: https://github.com/8ofproject/InstagramKit
 
 SPEC CHECKSUMS:

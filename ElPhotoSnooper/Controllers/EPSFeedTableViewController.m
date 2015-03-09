@@ -83,6 +83,7 @@
               cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EPSFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
                                                                  forIndexPath:indexPath];
+    cell.feedTableViewCellDelegate = _feedStorage;
     [self configureCell:cell
       forRowAtIndexPath:indexPath
           andJustConfig:NO];
@@ -133,17 +134,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)configureCell:(EPSFeedTableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath andJustConfig:(BOOL)justConfig {
     NSInteger section = indexPath.section;
+    NSString *Id = [_feedStorage getIdForElementInStorageWithIndex:section];
     NSURL *imageUrl = [_feedStorage getImageUrlForElementInStorageWithIndex:section];
     NSInteger likesCount = [_feedStorage getLikesCountForElementInStorageWithIndex:section];
     NSInteger commentsCount = [_feedStorage getCommentsCountForElementInStorageWithIndex:section];
     NSArray *comments = [_feedStorage getCommentsForElementInStorageWithIndex:section];
     BOOL userHasLiked = [_feedStorage userHasLikedElementWithIndex:section];
-    [cell prepareCellWithImageUrl:imageUrl
-                    andLikesCount:likesCount
-                 andCommentsCount:commentsCount
-                      andComments:comments
-                         andLiked:userHasLiked
-                    andJustConfig:justConfig];
+    [cell prepareCellWithId:Id
+                andImageUrl:imageUrl
+              andLikesCount:likesCount
+           andCommentsCount:commentsCount
+                andComments:comments
+                   andLiked:userHasLiked
+              andJustConfig:justConfig];
 }
 
 #pragma mark - EPSFeedStorageDelegate
