@@ -10,6 +10,7 @@
 #import "EPSConstants.h"
 #import "EPSFeedStorage.h"
 #import "EPSFeedTableViewCell.h"
+#import "IKLoginViewController.h"
 
 @interface EPSFeedTableViewController () <EPSFeedStorageDelegate>
 
@@ -26,16 +27,7 @@
     [super viewDidLoad];
     
     [self preparationsInController];
-    
-    BOOL isUserAuthed = [_feedStorage isUserAuthed];
-    if (!isUserAuthed) {
-        [self performSegueWithIdentifier:SEGUE_TO_AUTH_SCREEN
-                                  sender:self];
-    }
-    else {
-        [_feedStorage getUserFeed];
-        _alreadyLoadingNextPage = YES;
-    }
+    [self checkUserAndLoadAuthControllerIfNeeded];
 }
 
 - (void)preparationsInController {
@@ -59,10 +51,26 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)checkUserAndLoadAuthControllerIfNeeded {
+    BOOL isUserAuthed = [_feedStorage isUserAuthed];
+    if (!isUserAuthed) {
+        [self performSegueWithIdentifier:SEGUE_TO_AUTH_SCREEN
+                                  sender:self];
+    }
+    else {
+        [_feedStorage getUserFeed];
+        _alreadyLoadingNextPage = YES;
+    }
+}
+
 - (void)reloadFeed {
     if (_feedStorage) {
         [_feedStorage reloadUserFeed];
     }
+}
+
+- (void)reloadFeedFromOutside {
+    [self reloadFeed];
 }
 
 #pragma mark - Table view data source
@@ -129,6 +137,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return heightToReturn;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section {
+    return UITableViewAutomaticDimension;
+}
+
 #pragma mark - Configure
 
 - (void)configureCell:(EPSFeedTableViewCell *)cell
@@ -162,14 +175,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     _alreadyLoadingNextPage = NO;
 }
 
-- (void)updateLikedPhotoForIndex:(NSInteger)index {
-    /*
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:index];
-    EPSFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:FEED_CELL_REUSE_IDENTIFIER
-                                                                      forIndexPath:indexPath];
-     */
-}
-
 #pragma mark - Respoder rewrite
 
 - (BOOL)respondsToSelector:(SEL)selector {
@@ -198,6 +203,30 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         _alreadyLoadingNextPage = YES;
         [_feedStorage getUserFeed];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender {
+    if ([segue.identifier isEqualToString:SEGUE_TO_DETAIL_SCREEN]) {
+        // Задел на будущее для презентации детального вида
+    }
+    if ([segue.identifier isEqualToString:SEGUE_TO_AUTH_SCREEN]) {
+        UINavigationController *loginNavigationController = (UINavigationController *)segue.destinationViewController;
+        IKLoginViewController *loginViewController = loginNavigationController.viewControllers[0];
+        loginViewController.feedTableViewController = self;
+    }
+}
+
+#pragma mark - Logout
+
+- (IBAction)logoutAction:(id)sender {
+    [_feedStorage logout];
+    [[NSUserDefaults standardUserDefaults] setObject:@""
+                                              forKey:INSTAGRAM_USER_ACCESS_TOKEN];
+    [self.tableView reloadData];
+    [self checkUserAndLoadAuthControllerIfNeeded];
 }
 
 @end

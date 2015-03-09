@@ -14,7 +14,6 @@
 @protocol EPSFeedStorageDelegate <NSObject>
 
 - (void)updateViewWithFreshData;
-- (void)updateLikedPhotoForIndex:(NSInteger)index;
 
 @end
 
@@ -105,5 +104,9 @@
  *  @return строковое представление ссылки для медиа-элемента
  */
 -(NSString *)getMediaLinkWithIndex:(NSInteger)index;
+/**
+ *  Разлогинить текущего пользователя
+ */
+- (void)logout;
 
 @end

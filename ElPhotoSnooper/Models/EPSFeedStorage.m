@@ -253,4 +253,10 @@
     return accessToken;
 }
 
+- (void)logout {
+    [_instagramSharedEngine logout];
+    [_privateFeedMutableArray removeAllObjects];
+    _feedArray = _privateFeedMutableArray;
+}
+
 @end
