@@ -11,10 +11,14 @@
 #import "EPSFeedStorage.h"
 #import "EPSFeedTableViewCell.h"
 #import "IKLoginViewController.h"
+#import "EPSDetailedTableViewController.h"
 
 @interface EPSFeedTableViewController () <EPSFeedStorageDelegate>
 
 @property (nonatomic, strong) EPSFeedStorage *feedStorage;
+/**
+ *  Медиа-элемент для передачи в подробный вид
+ */
 @property (nonatomic, strong) EPSFeedTableViewCell *prototypeCell;
 @property (nonatomic, assign) BOOL alreadyLoadingNextPage;
 @property (nonatomic, strong) NSMutableDictionary *cachedCellHeights;
@@ -210,9 +214,15 @@ heightForHeaderInSection:(NSInteger)section {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
     if ([segue.identifier isEqualToString:SEGUE_TO_DETAIL_SCREEN]) {
-        // Задел на будущее для презентации детального вида
+
+            NSIndexPath *selectedCellPath = [self.tableView indexPathForSelectedRow];
+
+            InstagramMedia *instagramMedia = [_feedStorage feedArray][selectedCellPath.section];
+            
+            EPSDetailedTableViewController *detailedTableViewController = [segue destinationViewController];
+            detailedTableViewController.instagramMedia = instagramMedia;
     }
-    if ([segue.identifier isEqualToString:SEGUE_TO_AUTH_SCREEN]) {
+    else if ([segue.identifier isEqualToString:SEGUE_TO_AUTH_SCREEN]) {
         UINavigationController *loginNavigationController = (UINavigationController *)segue.destinationViewController;
         IKLoginViewController *loginViewController = loginNavigationController.viewControllers[0];
         loginViewController.feedTableViewController = self;

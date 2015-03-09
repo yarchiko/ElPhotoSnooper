@@ -76,7 +76,7 @@
         <!--Feed Table View Controller-->
         <scene sceneID="esh-ch-jTk">
             <objects>
-                <tableViewController id="TXO-Fj-nib" customClass="EPSFeedTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Feed Table View Controller" id="TXO-Fj-nib" customClass="EPSFeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="388" sectionHeaderHeight="44" sectionFooterHeight="22" id="EHA-3t-vA9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,6 +145,7 @@
                                     <outlet property="commentsLabel" destination="Ak8-1E-FMB" id="AzX-gZ-m2x"/>
                                     <outlet property="image" destination="5NY-RK-4Ix" id="aQg-rT-WFX"/>
                                     <outlet property="likeButton" destination="s5f-wJ-snd" id="PTq-Hb-ytm"/>
+                                    <segue destination="wPP-8O-ida" kind="show" identifier="segueToDetailScreen" id="61g-kT-AkX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -170,6 +171,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgN-LA-OU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-522" y="331"/>
+        </scene>
+        <!--Detailed Table View Controller-->
+        <scene sceneID="pcL-Rh-h2N">
+            <objects>
+                <tableViewController title="Detailed Table View Controller" id="wPP-8O-ida" customClass="EPSDetailedTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="44" sectionFooterHeight="22" id="Dp3-YC-SK2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MediaCell" rowHeight="320" id="JbW-tl-ano" customClass="IKMediaCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JbW-tl-ano" id="BRk-ay-haX">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQm-U5-4mM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="319.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="cQm-U5-4mM" secondAttribute="height" multiplier="320:319" id="4BJ-vi-dNs"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cQm-U5-4mM" firstAttribute="leading" secondItem="BRk-ay-haX" secondAttribute="leading" id="cSI-vl-4UI"/>
+                                        <constraint firstItem="cQm-U5-4mM" firstAttribute="top" secondItem="BRk-ay-haX" secondAttribute="top" id="d5G-e3-O0Q"/>
+                                        <constraint firstAttribute="trailing" secondItem="cQm-U5-4mM" secondAttribute="trailing" id="sTu-X4-IEp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="mediaImage" destination="cQm-U5-4mM" id="2Qq-Wj-TxX"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="6av-ea-4xi" style="IBUITableViewCellStyleDefault" id="jMJ-yr-9Fw">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jMJ-yr-9Fw" id="yx1-Ts-IO3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6av-ea-4xi">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wPP-8O-ida" id="iOv-Wy-IpY"/>
+                            <outlet property="delegate" destination="wPP-8O-ida" id="N67-Sv-8qK"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d5y-BI-cgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="331"/>
         </scene>
     </scenes>
 </document>
